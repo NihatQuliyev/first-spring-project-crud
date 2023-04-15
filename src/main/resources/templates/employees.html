@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Employees</title>
+  <link rel="stylesheet" href="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"  />
+</head>
+<body>
+<div >
+  <div class="container-fluid text-center"><h2>Manage Employees</h2></div>
+  <div class="m-2"  >
+    <a style="background: red" class="h5  m-2" th:href="@{/employees/new}">   ->Add New Employee </a>
+
+  </div>
+  <div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+
+
+  </div>
+  <div class="container-fluid text-center">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>E-mail</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="employee : ${listEmployees}">
+        <tr>
+          <td>[[${employee.id}]]</td>
+          <td>[[${employee.email}]]</td>
+          <td>[[${employee.firstName}]]</td>
+          <td>[[${employee.lastName}]]</td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/employees/edit/'  + ${employee.id}}">Edit</a>
+            <a class="h4" th:href="@{'/employees/delete/' + ${employee.id}}">Delete</a>
+          </td>
+        </tr>
+
+      </th:block>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

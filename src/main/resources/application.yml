@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: emp
+  profiles:
+    include:
+      - db
+      - security
+      - const-data
+server:
+  port: 8182
